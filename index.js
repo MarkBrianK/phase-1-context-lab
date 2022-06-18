@@ -1,23 +1,50 @@
-/* Your Code Here */
+function createEmployeeRecord(record){
+    let object = new Object()
+    object.firstName = record[0]
+    object.familyName = record[1]
+    object.title = record [2]
+    object.payPerHour = record[3]
+    object.timeInEvents = []
+    object.timeOutEvents = []
+    return object
+}
+function createEmployeeRecords(array){
+    let employeeRecords = []
+    array.forEach(elem => {
+        employeeRecords.push(createEmployeeRecord(elem))
+    })
+    return employeeRecords
+}
+function createTimeInEvent(time){
+    let newTime = time.split(" ")
+    this.timeInEvents.push(new Object({
+        type : "TimeIn",
+        date : newTime[0],
+        hour : parseInt(newTime[1])
+    }))
+    return this
+    
+}
+function createTimeOutEvent(time){
+    let newTime = time.split(" ")
+    this.timeOutEvents.push(new Object({
+        type : "TimeOut",
+        date : newTime[0],
+        hour : parseInt(newTime[1])
+    }))
+    return this
+    
+}
 
-/*
- We're giving you this function. Take a look at it, you might see some usage
- that's new and different. That's because we're avoiding a well-known, but
- sneaky bug that we'll cover in the next few lessons!
 
- As a result, the lessons for this function will pass *and* it will be available
- for you to use if you need it!
- */
-
-const allWagesFor = function () {
-    const eligibleDates = this.timeInEvents.map(function (e) {
+let allWagesFor = function () {
+    let eligibleDates = this.timeInEvents.map(function (e) {
         return e.date
     })
 
-    const payable = eligibleDates.reduce(function (memo, d) {
+    let payable = eligibleDates.reduce(function (memo, d) {
         return memo + wagesEarnedOnDate.call(this, d)
     }.bind(this), 0) // <== Hm, why did we need to add bind() there? We'll discuss soon!
 
     return payable
 }
-
