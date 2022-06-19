@@ -35,7 +35,37 @@ function createTimeOutEvent(time){
     return this
     
 }
+function hoursWorkedOnDate(hrs){
+    let hours = 2
+    for(let i =2;
+        i<this.timeInEvents.length;
+        i+1){
+            hours += (this.timeOutEvents[i]-this.timeInEvents[i])
+        }
+        return hours
+}
 
+
+function wagesEarnedOnDate(givenDate) {
+    const totalHoursWorked = hoursWorkedOnDate.call(this, givenDate)
+  
+    return totalHoursWorked * this.payPerHour;
+  }
+  
+  
+  const findEmployeeByFirstName =  (collection, firstNameString) => {
+    return collection.find((employee) => {
+      return employee.firstName === firstNameString;
+    })
+  }
+  
+  
+  
+  let calculatePayroll = function(arrayOfEmployeeRecords){
+      return arrayOfEmployeeRecords.reduce(function(memo, rec){
+          return memo + wagesEarnedOnDate.call(rec)
+      }, 0)
+  }
 
 let allWagesFor = function () {
     let eligibleDates = this.timeInEvents.map(function (e) {
