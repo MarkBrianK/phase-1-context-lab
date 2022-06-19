@@ -1,13 +1,18 @@
 function createEmployeeRecord(record){
-    let object = new Object()
-    object.firstName = record[0]
-    object.familyName = record[1]
-    object.title = record [2]
-    object.payPerHour = record[3]
-    object.timeInEvents = []
-    object.timeOutEvents = []
-    return object
+    return { 
+        firstName : record[0],
+        familyName: record[1],
+        title :record [2],
+        payPerHour :record[3],
+        timeInEvents : [],
+        timeOutEvents : []
+        }
+   
 }
+let twoRows = [
+    ["moe", "sizlak","barkeep",2]
+    ["bartholomew","simpson","scamp",3]
+]
 function createEmployeeRecords(array){
     let employeeRecords = []
     array.forEach(elem => {
@@ -36,8 +41,8 @@ function createTimeOutEvent(time){
     
 }
 function hoursWorkedOnDate(hrs){
-    let hours = 2
-    for(let i =2;
+    let hours = 0
+    for(let i =0;
         i<this.timeInEvents.length;
         i+1){
             hours += (this.timeOutEvents[i]-this.timeInEvents[i])
