@@ -49,14 +49,13 @@ function hoursWorkedOnDate(hrs){
         }
         return hours
 }
-
-
-function wagesEarnedOnDate(givenDate) {
-    const totalHoursWorked = hoursWorkedOnDate.call(this, givenDate)
-  
-    return totalHoursWorked * this.payPerHour;
-  }
-  
+function hoursWorkedOnDate(hrs){
+    let hours = 0
+    for(let i = 0; i < this.timeInEvents.length; i++){
+        hours += (this.timeOutEvents[i].hour - this.timeInEvents[i].hour) /100
+    }
+    return hours
+}
   
   const findEmployeeByFirstName =  (collection, firstNameString) => {
     return collection.find((employee) => {
